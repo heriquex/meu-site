@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ByUlbur3st - Intro</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f1113;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      text-align: center;
+      max-width: 700px;
+      padding: 20px;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    h1, h2 {
+      color: #00adee;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    button {
+      background: #00adee;
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background: #008bbd;
+    }
+
+    /* Botão Pular Intro */
+    #skip-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: 2px solid #00adee;
+      color: #00adee;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    #skip-btn:hover {
+      background: #00adee;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Botão Pular -->
+  <button id="skip-btn" onclick="enterSite()">Pular Intro</button>
+
+  <!-- Slide 1 -->
+  <div class="slide active">
+    <h1>Bem-vindo à ByUlbur3st Games</h1>
+    <p>O portal oficial dos nossos jogos, novidades e lançamentos.</p>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide">
+    <h2>Por que criamos este site?</h2>
+    <p>Para reunir todos os nossos projetos em um só lugar, oferecendo informações claras e links oficiais de compra.</p>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide">
+    <h2>Quem somos?</h2>
+    <p>A <strong>ByUlbur3st</strong> nasceu para levar diversão e experiências únicas a jogadores do mundo todo. Seja bem-vindo!</p>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="slide">
+    <h2>Pronto para começar?</h2>
+    <p>Clique abaixo para acessar o site oficial.</p>
+    <button onclick="enterSite()">Entrar no Site</button>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === index) slide.classList.add("active");
+      });
+    }
+
+    function nextSlide() {
+      current++;
+      if (current < slides.length) {
+        showSlide(current);
+      }
+    }
+
+    // Troca de slide a cada 3 segundos até o último
+    let interval = setInterval(() => {
+      if (current < slides.length - 1) {
+        nextSlide();
+      } else {
+        clearInterval(interval); // para no último
+      }
+    }, 3000);
+
+    function enterSite() {
+      window.location.href = "site.html"; // troque pelo nome do seu site principal
+    }
+  </script>
+
+</body>
+</html>
